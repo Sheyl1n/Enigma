@@ -31,9 +31,9 @@ class Rotor: NSObject {
     }
 
     func sanitiseIndex(_ index: Int) -> Int {
-        var returnIndex = index % (alphabet.count - 1)
+        var returnIndex = index % alphabet.count
         if index < 0 {
-            returnIndex = index + alphabet.count - 1
+            returnIndex = index + alphabet.count
         }
         return returnIndex
     }

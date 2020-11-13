@@ -17,7 +17,7 @@ class ViewController: UIViewController {
             return
         }
         let engine = Enigma(withConfig: config)
-        print(engine.encrypt(message: "bc"))
+        print(engine.encrypt(message: "Hello World"))
     }
 
 
