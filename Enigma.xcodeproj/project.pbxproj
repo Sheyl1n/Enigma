@@ -11,6 +11,7 @@
 		E52BFBD2255EDA740066B8F7 /* Enigma.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52BFBD1255EDA740066B8F7 /* Enigma.swift */; };
 		E52BFBD6255EE0060066B8F7 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52BFBD5255EE0060066B8F7 /* Config.swift */; };
 		E52BFBD8255EF2890066B8F7 /* String+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52BFBD7255EF2890066B8F7 /* String+Index.swift */; };
+		E52BFBDA255F31030066B8F7 /* RequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52BFBD9255F31030066B8F7 /* RequestAdapter.swift */; };
 		E58F159D24B4901F007D07AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F159C24B4901F007D07AE /* AppDelegate.swift */; };
 		E58F159F24B4901F007D07AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F159E24B4901F007D07AE /* SceneDelegate.swift */; };
 		E58F15A124B4901F007D07AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F15A024B4901F007D07AE /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 		E52BFBD1255EDA740066B8F7 /* Enigma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enigma.swift; sourceTree = "<group>"; };
 		E52BFBD5255EE0060066B8F7 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E52BFBD7255EF2890066B8F7 /* String+Index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Index.swift"; sourceTree = "<group>"; };
+		E52BFBD9255F31030066B8F7 /* RequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAdapter.swift; sourceTree = "<group>"; };
 		E58F159924B4901F007D07AE /* Enigma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enigma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58F159C24B4901F007D07AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E58F159E24B4901F007D07AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				E52BFBD1255EDA740066B8F7 /* Enigma.swift */,
 				E52BFBD5255EE0060066B8F7 /* Config.swift */,
 				E52BFBD7255EF2890066B8F7 /* String+Index.swift */,
+				E52BFBD9255F31030066B8F7 /* RequestAdapter.swift */,
 				E58F15A224B4901F007D07AE /* Main.storyboard */,
 				E58F15A524B49022007D07AE /* Assets.xcassets */,
 				E58F15A724B49022007D07AE /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E52BFBD0255ED94F0066B8F7 /* Rotor.swift in Sources */,
+				E52BFBDA255F31030066B8F7 /* RequestAdapter.swift in Sources */,
 				E52BFBD2255EDA740066B8F7 /* Enigma.swift in Sources */,
 				E58F15A124B4901F007D07AE /* ViewController.swift in Sources */,
 				E58F159D24B4901F007D07AE /* AppDelegate.swift in Sources */,
