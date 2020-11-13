@@ -30,14 +30,41 @@ class Rotor: NSObject {
         return replacement.indexInt(of: letter)
     }
 
+    func sanitiseIndex(_ index: Int) -> Int {
+        var returnIndex = index % (alphabet.count - 1)
+        if index < 0 {
+            returnIndex = index + alphabet.count - 1
+        }
+        return returnIndex
+    }
+
     func wayIn(letter: Character) -> Character {
-        let alphabetIndex = getAlphabetIndex(letter: letter)!
-        return Array(replacement)[alphabetIndex]
+        print("Incoming Letter: \(letter)")
+        let alphabetIndex = sanitiseIndex((getAlphabetIndex(letter: letter)! + index))
+        let normalizedIncomingLetter = Array(alphabet)[alphabetIndex]
+        print("Normalized Incoming Letter: \(normalizedIncomingLetter)")
+        let transformedLetter = Array(replacement)[alphabetIndex]
+        print("Transformed Letter: \(transformedLetter)")
+        let transformedIndex = sanitiseIndex((getAlphabetIndex(letter: transformedLetter)! - index))
+        let normalizedOutgoingLetter = Array(alphabet)[transformedIndex]
+        print("Normalized Outgoing Letter: \(normalizedOutgoingLetter)")
+        print("===========================================")
+       return normalizedOutgoingLetter
     }
     
     func wayOut(letter: Character) -> Character {
-        let replacementIndex = getReplacementIndex(letter: letter)!
-        return Array(alphabet)[replacementIndex]
+        print("Incoming Letter: \(letter)")
+        let alphabetIndex = sanitiseIndex((getAlphabetIndex(letter: letter)! + index))
+        let normalizedIncomingLetter = Array(alphabet)[alphabetIndex]
+        print("Normalized Incoming Letter: \(normalizedIncomingLetter)")
+        let replacementIndex = sanitiseIndex(getReplacementIndex(letter: normalizedIncomingLetter)!)
+        let transformedLetter = Array(alphabet)[replacementIndex]
+        print("Transformed Letter: \(transformedLetter)")
+        let transformedIndex = sanitiseIndex((getAlphabetIndex(letter: transformedLetter)! - index))
+        let normalizedOutgoingLetter = Array(alphabet)[transformedIndex]
+        print("Normalized Outgoing Letter: \(normalizedOutgoingLetter)")
+        print("===========================================")
+        return normalizedOutgoingLetter
     }
 
     func step() -> Bool {

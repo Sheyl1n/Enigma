@@ -47,20 +47,19 @@ class Enigma: NSObject {
                 var encryptedLetter = letter
                 for rotor in rotors {
                     encryptedLetter = rotor.wayIn(letter: encryptedLetter)
-                    print("Rotor inward: \(encryptedLetter)")
                 }
 
                 encryptedLetter = reflector.wayIn(letter: encryptedLetter)
-                print("Reflector: \(encryptedLetter)")
 
                 for rotor in rotors.reversed() {
                     encryptedLetter = rotor.wayOut(letter: encryptedLetter)
-                    print("Rotor outward: \(encryptedLetter)")
                 }
                 encryptedString.append(encryptedLetter)
+                print("Encrypted letter: \(encryptedLetter)")
+                print("===========================================")
             }
         }
-        print("Encrypted Result: \(message)")
+        print("Encrypted Result: \(encryptedString)")
         return encryptedString
     }
 
