@@ -39,4 +39,9 @@ class Rotor: NSObject {
         let replacementIndex = getReplacementIndex(letter: letter)!
         return Array(alphabet)[replacementIndex]
     }
+
+    func step() -> Bool {
+        index += 1
+        return steps.contains(Array(alphabet)[index-1])
+    }
 }

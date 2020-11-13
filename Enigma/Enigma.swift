@@ -28,35 +28,49 @@ class Enigma: NSObject {
 
     func sanitiseString(string: String) -> String {
         let returnValue = string.uppercased()
-        let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
         return returnValue.filter(alphabet.contains)
     }
 
     func encrypt(message: String) -> String {
+        print("Encrypting Message: \(message)")
         let sanitisedString = sanitiseString(string: message)
         var encryptedString = ""
         for letter in Array(sanitisedString) {
-            print("Encrypting letter: \(letter)")
-            step()
-            var encryptedLetter = letter
-            for rotor in rotors {
-                encryptedLetter = rotor.wayIn(letter: encryptedLetter)
-                print("Rotor inward: \(encryptedLetter)")
+            //Skip blanks for better usability
+            if letter == " " {
+                encryptedString.append(letter)
+            } else {
+
+                print("Encrypting letter: \(letter)")
+                step()
+                var encryptedLetter = letter
+                for rotor in rotors {
+                    encryptedLetter = rotor.wayIn(letter: encryptedLetter)
+                    print("Rotor inward: \(encryptedLetter)")
+                }
+
+                encryptedLetter = reflector.wayIn(letter: encryptedLetter)
+                print("Reflector: \(encryptedLetter)")
+
+                for rotor in rotors.reversed() {
+                    encryptedLetter = rotor.wayOut(letter: encryptedLetter)
+                    print("Rotor outward: \(encryptedLetter)")
+                }
+                encryptedString.append(encryptedLetter)
             }
-
-            encryptedLetter = reflector.wayIn(letter: encryptedLetter)
-            print("Reflector: \(encryptedLetter)")
-
-            for rotor in rotors.reversed() {
-                encryptedLetter = rotor.wayOut(letter: encryptedLetter)
-                print("Rotor outward: \(encryptedLetter)")
-           }
-            encryptedString.append(encryptedLetter)
         }
+        print("Encrypted Result: \(message)")
         return encryptedString
     }
 
     func step() {
-        
+        for rotor in rotors {
+            if !rotor.step() {
+                print("Rotor\(rotor) will not turn next")
+                break
+            }
+            print("Rotor\(rotor) will turn next")
+        }
     }
 }
