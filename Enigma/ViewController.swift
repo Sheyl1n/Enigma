@@ -8,18 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+
+    var id: String?
 
     @IBOutlet var idLabel: UILabel?
     @IBOutlet var textField: UITextField?
     @IBOutlet var recieverField: UITextField?
+
+    @IBOutlet var rotor1Label: UILabel?
+    @IBOutlet var rotor2Label: UILabel?
+    @IBOutlet var rotor3Label: UILabel?
+
+    @IBOutlet var rotor1Stepper: UIStepper?
+    @IBOutlet var rotor2Stepper: UIStepper?
+    @IBOutlet var rotor3Stepper: UIStepper?
 
     @IBAction func sendAction() {
         guard let msg = textField?.text, let reciever = recieverField?.text, let sender = id else {
             return
         }
 
-        guard let config = Config(rotors: [.I,.II,.III], reflector:.UKW_B, setting: [0,0,0]) else {
+        guard let config = Config(rotors: [RotorKey.rotorForInt(Int(rotor1Stepper!.value)),
+                                           RotorKey.rotorForInt(Int(rotor2Stepper!.value)),
+                                           RotorKey.rotorForInt(Int(rotor3Stepper!.value))], reflector:.UKW_B, setting: [0,0,0]) else {
             return
         }
         let engine = Enigma(withConfig: config)
@@ -28,9 +40,9 @@ class ViewController: UIViewController {
         RequestAdapter.current.sendMSG(msg: encryptedMSG, sender: sender, reciever: reciever) { (result) in
             switch result {
 
-            case .success((let response, let data)):
+            case .success((let _, let _)):
                 self.textField?.text = ""
-            case .failure(let error):
+            case .failure(let _):
                 self.textField?.backgroundColor = UIColor.red
             }
         }
@@ -40,11 +52,25 @@ class ViewController: UIViewController {
         
     }
 
-    var id: String?
+    @IBAction func changeRotors() {
+        layoutRotors()
+    }
+
+    func layoutRotors() {
+        rotor1Label?.text = RotorKey.rotorForInt(Int(rotor1Stepper!.value)).title
+        rotor2Label?.text = RotorKey.rotorForInt(Int(rotor2Stepper!.value)).title
+        rotor3Label?.text = RotorKey.rotorForInt(Int(rotor3Stepper!.value)).title
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getID()
+
+        rotor1Stepper?.value = 1
+        rotor2Stepper?.value = 2
+        rotor3Stepper?.value = 3
+
+        layoutRotors()
     }
 
     func getID() {
@@ -67,5 +93,19 @@ class ViewController: UIViewController {
         }
     }
 
+    //MARK: -
+    //MARK: UIPickerViewDataSource
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 26
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ")[row])
+    }
 }
 

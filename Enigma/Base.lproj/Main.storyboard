@@ -15,17 +15,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EvO-Gq-gsU">
-                                <rect key="frame" x="174" y="129" width="67" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EvO-Gq-gsU">
+                                <rect key="frame" x="160" y="142" width="94" height="150"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="VVc-fC-zCa"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="GCO-ih-gsx"/>
+                                </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-ZE-AZd">
-                                <rect key="frame" x="249" y="129" width="67" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-ZE-AZd">
+                                <rect key="frame" x="300" y="142" width="94" height="150"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="pSL-Cy-S2y"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="yBm-Q9-GDy"/>
+                                </connections>
                             </pickerView>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LsM-9J-oX5">
-                                <rect key="frame" x="99" y="129" width="67" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsM-9J-oX5">
+                                <rect key="frame" x="20" y="142" width="94" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="9bL-t7-cuA"/>
+                                    <constraint firstAttribute="width" constant="94" id="GiZ-Nq-ovd"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Zka-qP-ZiW"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="z3d-J8-4sQ"/>
+                                </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID: &lt;requesting&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZz-B9-N4A">
                                 <rect key="frame" x="143" y="44" width="128" height="21"/>
@@ -34,50 +47,119 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sco-M9-Yla">
-                                <rect key="frame" x="358" y="532" width="36" height="30"/>
+                                <rect key="frame" x="358" y="562" width="36" height="30"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="sendAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="9lU-5x-snY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ME8-RR-ifx">
-                                <rect key="frame" x="20" y="532" width="127" height="30"/>
+                                <rect key="frame" x="20" y="562" width="127" height="30"/>
                                 <state key="normal" title="Recieve Messages"/>
                                 <connections>
                                     <action selector="recieveAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="iVO-if-FSg"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6fP-ty-sSN">
-                                <rect key="frame" x="20" y="490" width="374" height="34"/>
+                                <rect key="frame" x="20" y="520" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reciever" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jdk-hr-h3S">
-                                <rect key="frame" x="20" y="448" width="374" height="34"/>
+                                <rect key="frame" x="20" y="478" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hbt-eP-1Jx">
+                                <rect key="frame" x="20" y="73" width="94" height="32"/>
+                                <connections>
+                                    <action selector="changeRotors" destination="BYZ-38-t0r" eventType="valueChanged" id="c3L-J7-eBC"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minimumValue="1" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="6ZH-uV-y3Y">
+                                <rect key="frame" x="160" y="73" width="94" height="32"/>
+                                <connections>
+                                    <action selector="changeRotors" destination="BYZ-38-t0r" eventType="valueChanged" id="nQ4-Dd-JLJ"/>
+                                </connections>
+                            </stepper>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="1" maximumValue="8" translatesAutoresizingMaskIntoConstraints="NO" id="H8o-dH-EMz">
+                                <rect key="frame" x="300" y="73" width="94" height="32"/>
+                                <connections>
+                                    <action selector="changeRotors" destination="BYZ-38-t0r" eventType="valueChanged" id="BEO-Ff-Hgq"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yj0-mH-k5u">
+                                <rect key="frame" x="186" y="113" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evm-VR-7Ws">
+                                <rect key="frame" x="326" y="113" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9M-TB-ynp">
+                                <rect key="frame" x="46" y="113" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="sco-M9-Yla" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-300" id="2AM-gM-TTY"/>
+                            <constraint firstItem="EvO-Gq-gsU" firstAttribute="bottom" secondItem="LsM-9J-oX5" secondAttribute="bottom" id="1oI-j5-nJk"/>
+                            <constraint firstItem="sco-M9-Yla" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-270" id="2AM-gM-TTY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdk-hr-h3S" secondAttribute="trailing" constant="20" id="2T9-fC-my3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H8o-dH-EMz" secondAttribute="trailing" constant="20" id="2f4-Ih-4nc"/>
+                            <constraint firstItem="Evm-VR-7Ws" firstAttribute="centerX" secondItem="H8o-dH-EMz" secondAttribute="centerX" id="2jj-9T-SSc"/>
                             <constraint firstItem="jdk-hr-h3S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="69S-MR-NfN"/>
+                            <constraint firstItem="Tgt-ZE-AZd" firstAttribute="trailing" secondItem="H8o-dH-EMz" secondAttribute="trailing" id="6Qh-gD-afl"/>
+                            <constraint firstItem="Tgt-ZE-AZd" firstAttribute="top" secondItem="EvO-Gq-gsU" secondAttribute="top" id="8Dc-EB-PEC"/>
+                            <constraint firstItem="EvO-Gq-gsU" firstAttribute="leading" secondItem="6ZH-uV-y3Y" secondAttribute="leading" id="9Kn-UI-HKr"/>
+                            <constraint firstItem="Tgt-ZE-AZd" firstAttribute="leading" secondItem="H8o-dH-EMz" secondAttribute="leading" id="BQM-qt-90q"/>
+                            <constraint firstItem="LsM-9J-oX5" firstAttribute="leading" secondItem="Hbt-eP-1Jx" secondAttribute="leading" id="IlI-kY-Gtc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6fP-ty-sSN" secondAttribute="trailing" constant="20" id="JMy-xM-u9r"/>
+                            <constraint firstItem="yj0-mH-k5u" firstAttribute="top" secondItem="6ZH-uV-y3Y" secondAttribute="bottom" constant="8" id="KzP-Qh-t8t"/>
+                            <constraint firstItem="q9M-TB-ynp" firstAttribute="centerX" secondItem="Hbt-eP-1Jx" secondAttribute="centerX" id="NLK-Xq-df5"/>
+                            <constraint firstItem="Hbt-eP-1Jx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="P2p-wc-XsV"/>
+                            <constraint firstItem="EvO-Gq-gsU" firstAttribute="top" secondItem="LsM-9J-oX5" secondAttribute="top" id="RD0-43-Mpq"/>
+                            <constraint firstItem="Hbt-eP-1Jx" firstAttribute="top" secondItem="6ZH-uV-y3Y" secondAttribute="top" id="RnE-aZ-S2L"/>
+                            <constraint firstItem="6ZH-uV-y3Y" firstAttribute="top" secondItem="BZz-B9-N4A" secondAttribute="bottom" constant="8" id="S3s-05-yaI"/>
+                            <constraint firstItem="Evm-VR-7Ws" firstAttribute="top" secondItem="H8o-dH-EMz" secondAttribute="bottom" constant="8" id="TBC-C4-RI2"/>
                             <constraint firstItem="6fP-ty-sSN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="XZg-jy-JhU"/>
                             <constraint firstItem="BZz-B9-N4A" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a9c-EE-5A4"/>
+                            <constraint firstItem="Tgt-ZE-AZd" firstAttribute="bottom" secondItem="EvO-Gq-gsU" secondAttribute="bottom" id="aWs-0K-NVv"/>
                             <constraint firstItem="BZz-B9-N4A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="byZ-it-Poh"/>
                             <constraint firstItem="6fP-ty-sSN" firstAttribute="top" secondItem="jdk-hr-h3S" secondAttribute="bottom" constant="8" id="cWK-10-BTz"/>
-                            <constraint firstItem="ME8-RR-ifx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-300" id="fP2-Vp-m4S"/>
+                            <constraint firstItem="6ZH-uV-y3Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e0u-wR-w2a"/>
+                            <constraint firstItem="LsM-9J-oX5" firstAttribute="top" secondItem="q9M-TB-ynp" secondAttribute="bottom" constant="8" id="eQb-xu-L0E"/>
+                            <constraint firstItem="EvO-Gq-gsU" firstAttribute="top" secondItem="yj0-mH-k5u" secondAttribute="bottom" constant="8" id="eZv-CA-vgO"/>
+                            <constraint firstItem="ME8-RR-ifx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-270" id="fP2-Vp-m4S"/>
+                            <constraint firstItem="LsM-9J-oX5" firstAttribute="width" secondItem="Tgt-ZE-AZd" secondAttribute="width" id="ge9-V8-po3"/>
+                            <constraint firstItem="H8o-dH-EMz" firstAttribute="top" secondItem="6ZH-uV-y3Y" secondAttribute="top" id="guu-P5-tgJ"/>
+                            <constraint firstItem="LsM-9J-oX5" firstAttribute="trailing" secondItem="Hbt-eP-1Jx" secondAttribute="trailing" id="i46-Yx-7LF"/>
+                            <constraint firstItem="EvO-Gq-gsU" firstAttribute="trailing" secondItem="6ZH-uV-y3Y" secondAttribute="trailing" id="rib-jD-A7K"/>
+                            <constraint firstItem="q9M-TB-ynp" firstAttribute="top" secondItem="Hbt-eP-1Jx" secondAttribute="bottom" constant="8" id="uEc-EU-bVW"/>
+                            <constraint firstItem="LsM-9J-oX5" firstAttribute="width" secondItem="EvO-Gq-gsU" secondAttribute="width" id="urk-WU-jCg"/>
                             <constraint firstItem="sco-M9-Yla" firstAttribute="top" secondItem="6fP-ty-sSN" secondAttribute="bottom" constant="8" id="vg5-tu-20U"/>
                             <constraint firstItem="ME8-RR-ifx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vzh-zc-9JK"/>
+                            <constraint firstItem="Tgt-ZE-AZd" firstAttribute="top" secondItem="Evm-VR-7Ws" secondAttribute="bottom" constant="8" id="wxg-k1-dsh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sco-M9-Yla" secondAttribute="trailing" constant="20" id="yEz-uo-mzv"/>
+                            <constraint firstItem="yj0-mH-k5u" firstAttribute="centerX" secondItem="6ZH-uV-y3Y" secondAttribute="centerX" id="ypu-nc-bO2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="idLabel" destination="BZz-B9-N4A" id="eo2-Sb-GRX"/>
                         <outlet property="recieverField" destination="jdk-hr-h3S" id="jXK-Ms-WYu"/>
+                        <outlet property="rotor1Label" destination="q9M-TB-ynp" id="xOH-vi-8Ba"/>
+                        <outlet property="rotor1Stepper" destination="Hbt-eP-1Jx" id="qsB-hA-eMO"/>
+                        <outlet property="rotor2Label" destination="yj0-mH-k5u" id="3KF-9A-vPm"/>
+                        <outlet property="rotor2Stepper" destination="6ZH-uV-y3Y" id="M7q-fG-qvX"/>
+                        <outlet property="rotor3Label" destination="Evm-VR-7Ws" id="ioA-x3-irn"/>
+                        <outlet property="rotor3Stepper" destination="H8o-dH-EMz" id="Ptu-bl-5Hx"/>
                         <outlet property="textField" destination="6fP-ty-sSN" id="kQD-FX-ZmX"/>
                     </connections>
                 </viewController>

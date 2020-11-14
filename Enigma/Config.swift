@@ -33,6 +33,55 @@ enum RotorKey {
     case VII
     case VIII
 
+    static func rotorForInt(_ int: Int) -> RotorKey {
+        if int == 1 {
+            return .I
+        }
+        if int == 2 {
+            return .II
+        }
+        if int == 3 {
+            return .III
+        }
+        if int == 4 {
+            return .IV
+        }
+        if int == 5 {
+            return .V
+        }
+        if int == 6 {
+            return .VI
+        }
+        if int == 7 {
+            return .VII
+        }
+        if int == 8 {
+            return .VIII
+        }
+        return .I
+    }
+
+    var title: String {
+        switch self {
+        case .I:
+            return "I"
+        case .II:
+            return "II"
+        case .III:
+            return "III"
+        case .IV:
+            return "IV"
+        case .V:
+            return "V"
+        case .VI:
+            return "VI"
+        case .VII:
+            return "VII"
+        case .VIII:
+            return "VIII"
+        }
+    }
+
     var replacement: String {
         switch self {
         case .I:
@@ -73,6 +122,48 @@ enum RotorKey {
             return "ZM"
         case .VIII:
             return "ZM"
+        }
+    }
+
+    var next: RotorKey {
+        switch self {
+        case .I:
+            return .II
+        case .II:
+            return .III
+        case .III:
+            return .IV
+        case .IV:
+            return .V
+        case .V:
+            return .VI
+        case .VI:
+            return .VII
+        case .VII:
+            return .VIII
+        case .VIII:
+            return .I
+        }
+    }
+
+    var last: RotorKey {
+        switch self {
+        case .I:
+            return .VIII
+        case .II:
+            return .I
+        case .III:
+            return .II
+        case .IV:
+            return .III
+        case .V:
+            return .IV
+        case .VI:
+            return .V
+        case .VII:
+            return .VI
+        case .VIII:
+            return .VII
         }
     }
 }
