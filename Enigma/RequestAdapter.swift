@@ -53,6 +53,31 @@ class RequestAdapter: NSObject, URLSessionDelegate {
         task.resume()
     }
 
+    func getMessage(reciever: String, completionHandler: @escaping (Swift.Result<(HTTPURLResponse, Data), NetworkError>) -> Void) {
+
+        // Build up the URL
+        guard let url = URL(string: "http://5.45.106.224:8080/enigma/message/\(reciever)") else {
+            completionHandler(.failure(.badURL))
+            return
+        }
+
+        // Generate and execute the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+
+        let task = sharedSession().dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    completionHandler(.failure(.badURL))
+                    return
+                }
+                completionHandler(.success((response, data)))
+            }
+        }
+        task.resume()
+    }
+
     func sendMSG(msg: String, sender: String, reciever: String, completionHandler: @escaping (Swift.Result<(HTTPURLResponse, Data), NetworkError>) -> Void) {
 
         // Build up the URL
@@ -64,6 +89,10 @@ class RequestAdapter: NSObject, URLSessionDelegate {
         // Generate and execute the request
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+
+        var header: [String:String] = [:]
+        header["Content-Type"] = "application/json"
+        request.allHTTPHeaderFields = header
 
         var dict: [String:Any] = ["receiverId":reciever]
         let message: [String:Any] = ["senderId": sender, "text": msg]
